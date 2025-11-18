@@ -23,6 +23,11 @@ jobs:
   build_and_push:
     name: Push Docker image to GitHub Container Registry
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
 
     steps:
       - name: Checkout repository
