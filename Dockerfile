@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------- #
 #                          Stage 1 - Dependencies                             #
 # --------------------------------------------------------------------------- #
-FROM python:3.13-slim AS python-deps
+FROM python:3.13-slim
 
 # Install ca-certificates for SSL
 RUN apt-get update && apt-get install -y ca-certificates curl && rm -rf /var/lib/apt/lists/*
@@ -24,18 +24,13 @@ RUN uv pip install --no-cache --native-tls --system -r pyproject.toml
 COPY ./scripts/install_ffmpeg.sh /tmp/install_ffmpeg.sh
 RUN chmod +x /tmp/install_ffmpeg.sh && /tmp/install_ffmpeg.sh
 
-# --------------------------------------------------------------------------- #
-#                          Stage 2 - Final image                              #
-# --------------------------------------------------------------------------- #
-FROM python:3.13-slim
-
 # Copy gosu from gosu image to allow running as non-root user
 COPY --from=tianon/gosu:trixie /usr/local/bin/gosu /usr/local/bin/gosu
 RUN chmod +x /usr/local/bin/gosu
 
-# Copy uv, ffmpeg and Python dependencies from python-deps stage to make it available in final image
-COPY --from=python-deps /usr/local/bin/ /usr/local/bin/
-COPY --from=python-deps /usr/local/lib/python3.13/site-packages/ /usr/local/lib/python3.13/site-packages/
+# # Copy uv, ffmpeg and Python dependencies from python-deps stage to make it available in final image
+# COPY --from=python-deps /usr/local/bin/ /usr/local/bin/
+# COPY --from=python-deps /usr/local/lib/python3.13/site-packages/ /usr/local/lib/python3.13/site-packages/
 
 # Install HW Acceleration drivers and libraries
 COPY ./scripts/install_drivers.sh /tmp/install_drivers.sh
