@@ -1,0 +1,9 @@
+[project]
+name = "ffmpeg-python"
+version = "0.1.0"
+description = "A python docker image with yt-dlp, deno, custom ffmpeg installed along with hardware acceleration support."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "yt-dlp[curl-cffi,default]>=2025.11.12",
+]
