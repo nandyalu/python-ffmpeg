@@ -23,7 +23,7 @@ Please refer to their respective repositories for more information and licensing
 
 # How to use
 
-To use this Docker image, you can pull it from Docker Hub and use it as a base image in your Dockerfile or run it directly.:
+To use this Docker image, you can pull it from Docker Hub and use it as a base image in your Dockerfile like this:
 
 ```Dockerfile
 FROM nandyalu/python-ffmpeg:latest
