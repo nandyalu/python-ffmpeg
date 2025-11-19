@@ -16,6 +16,35 @@ This project uses the following open-source projects:
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp)
 - [deno](https://github.com/denoland/deno)
 - [uv](https://github.com/astral-sh/uv)
+- [gosu](https://github.com/tianon/gosu)
 - [FFmpeg-Builds](https://github.com/yt-dlp/FFmpeg-Builds)
 
 Please refer to their respective repositories for more information and licensing details.
+
+# How to use
+
+To use this Docker image, you can pull it from Docker Hub and use it as a base image in your Dockerfile or run it directly.:
+
+```Dockerfile
+FROM nandyalu/python-ffmpeg:latest
+
+# python3.13, uv, gosu, yt-dlp, deno (for yt-dlp-ejs), ffmpeg with hw acceleration drivers are pre-installed
+
+
+# Rest of your Dockerfile instructions
+# Below is an example, uncomment and adjust as needed
+
+# Example of installing additional Python packages
+# WORKDIR /app
+# COPY pyproject.toml .
+# RUN uv pip install --no-cache --native-tls --system -r pyproject.toml
+
+
+# Create a non-root user/group and switch to it
+# Below command will create a user 'appuser' and group 'appuser'
+# RUN groupadd -r appuser && useradd -r -g appuser appuser
+
+
+# Run your application
+# CMD ["gosu", "appuser", "python", "your_script.py"]
+```
