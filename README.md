@@ -1,5 +1,7 @@
 A python docker image with yt-dlp, deno, custom ffmpeg installed along with hardware acceleration support.
 
+Docker image: [nandyalu/python-ffmpeg](https://hub.docker.com/r/nandyalu/python-ffmpeg)
+
 # Features
 
 - Python 3.13-slim base image
