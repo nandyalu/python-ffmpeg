@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  schedule:
+    - cron: '0 10 * * *' # Runs daily at 10:00 UTC / 05:00 EST
   workflow_dispatch:
 
 # Ensure the workflow token has the permission to write packages
