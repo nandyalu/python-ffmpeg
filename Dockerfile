@@ -65,10 +65,10 @@ RUN curl -fsSL https://deno.land/install.sh | DENO_INSTALL=/usr/local sh && \
     /usr/local/bin/deno --version
 
 # Set the working directory
-WORKDIR /app
+# WORKDIR /app
 
 # Copy the project folders and files
-COPY . /app
+# COPY . /app
 
 # Run a command to keep the container running for testing purposes
 CMD ["sleep", "infinity"]
